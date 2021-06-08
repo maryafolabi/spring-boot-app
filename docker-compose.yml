@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  decadevs_docker_mary:
+    container_name: decadevs-docker-mary
+    image: decadevs-docker-mary
+    build: ./
+    ports:
+      - "8046:8080"
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    ports:
+      - '3307:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: mary
+      MYSQL_DATABASE: testdb
+      MYSQL_PASSWORD: password
